@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eltonbraz-chatbackend-application
+  name: chatbackend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: eltonbraz-chatbackend-application
+      app: chatbackend
   template:
     metadata:
       labels: # labels to select/identify the deployment
-        app: eltonbraz-chatbackend-application
+        app: chatbackend
     spec: # pod spec
       containers:
         - name: chat-backend
