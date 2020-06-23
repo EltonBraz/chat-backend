@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eltonbraz-chatbackend-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eltonbraz-chatbackend-application
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: eltonbraz-chatbackend-application
+    spec: # pod spec
+      containers:
+        - name: chat-backend
+          image: us.icr.io/cldstd38-ns/chat-backend:latest # image we pushed
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APIKEY
+              value: qT00GVcSHra6QbwXHuQWxgdtDgD5KJsN2Dpo45wWb-kc
+            - name: URL
+              value: https://api.us-south.assistant.watson.cloud.ibm.com/instances/f04e31e2-d286-44e1-aa53-0a67a3da3704
+            - name: ASSISTANT_ID
+              value: 7d9b243f-1b81-44e1-be39-e2522f2e6315
